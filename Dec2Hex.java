@@ -5,9 +5,8 @@ class Dec2Hex
 
     public static int Arg1;
 
-    public static void main(String args[])
+    public static void main(String args[]) {
 	    System.out.println("New Change");
-    {
         if (args.length > 0) 
         {
             try 
