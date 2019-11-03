@@ -3,18 +3,38 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import static org.mockito.Mockito.when;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @RunWith(MockitoJUnitRunner.class)
 public class Dec2HexTest {
 
-    @Mock
-    Dec2Hex dec2Hex;
-
     @Test
-    public void hexademicalTest() throws Exception {
-//        when(dec2Hex.convertToHexadecimal()).thenReturn();
+    public void hexademicalConversionSuccessTest() throws Exception {
+        String input = "5";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        assertThat(Dec2Hex.convertToHexadecimal()).isEqualTo(0);
     }
 
+    @Test(expected = Exception.class)
+    public void hexademicalConversionEmptyFailureTest() throws Exception {
+        String input = "";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
 
+        Dec2Hex.convertToHexadecimal();
+    }
+
+    @Test(expected = Exception.class)
+    public void hexademicalConversionStringFailureTest() throws Exception {
+        String input = "Failure";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        Dec2Hex.convertToHexadecimal();
+    }
 }
