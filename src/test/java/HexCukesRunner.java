@@ -4,6 +4,8 @@ import cucumber.api.java.en.Then;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
 public class HexCukesRunner {
 
     @Given("A Value is Given")
@@ -15,6 +17,6 @@ public class HexCukesRunner {
 
     @Then("The Value Should be Converted to Hex")
     public void hexCheck() throws Exception {
-        Dec2Hex.convertToHexadecimal();
+        assertThat(Dec2Hex.convertToHexadecimal()).isEqualTo("9b");
     }
 }
