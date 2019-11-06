@@ -12,11 +12,11 @@ public class Dec2HexTest {
 
     @Test
     public void hexademicalConversionSuccessTest() throws Exception {
-        String input = "5";
+        String input = "155";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        assertThat(Dec2Hex.convertToHexadecimal()).isEqualTo(0);
+        assertThat(Dec2Hex.convertToHexadecimal()).isEqualTo("9b");
     }
 
     @Test(expected = Exception.class)
